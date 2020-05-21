@@ -57,4 +57,5 @@ export GHE_LXC_NAME=ghe-dev-$(id -un)
 export OVERLAY_VM_FILES=yes
 export ENABLE_ACTIONS=1
 
-src;
+src
+git update-index --skip-worktree pkg_files/github/db/schema.production.json.gz
