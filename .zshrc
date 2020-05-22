@@ -59,3 +59,4 @@ export ENABLE_ACTIONS=1
 
 src
 git update-index --skip-worktree pkg_files/github/db/schema.production.json.gz
+git update-index --skip-worktree pkg_files/github/seed.sql
