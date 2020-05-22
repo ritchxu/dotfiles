@@ -9,6 +9,7 @@ git clone git@github.com:github/enterprise2
 ```shell
 cd ~/enterprise2
 git update-index --skip-worktree pkg_files/github/db/schema.production.json.gz
+git update-index --skip-worktree pkg_files/github/seed.sql
 ```
 
 #### Clone dotfiles
