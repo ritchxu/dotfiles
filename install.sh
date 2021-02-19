@@ -10,3 +10,5 @@ if [ "$SHELL" != "/usr/bin/zsh" ]; then
     sudo apt install -y zsh
     zsh
 fi;
+
+export AzureSubscriptionId='4ca6f0c2-8411-41ad-8382-81bd1cc491b3'
