@@ -46,17 +46,5 @@ bindkey '^[[1;5D' backward-word
 
 # Aliases
 alias cls=clear
-alias src="cd ~/enterprise2;"
 alias reset="src; chroot-stop.sh; chroot-reset.sh; chroot-cluster-stop.sh; chroot-cluster-reset.sh test/cluster.conf; chroot-cluster-reset.sh test/cluster-ha.conf; chroot-cluster-reset.sh test/cluster-dr.conf;"
 alias br="reset; chroot-build.sh && chroot-start.sh && chroot-configure.sh"
-
-# enterprise2
-export PATH=~/enterprise2:$PATH
-export DEV_MODE=1
-export GHE_LXC_NAME=ghe-dev-$(id -un)
-export OVERLAY_VM_FILES=yes
-export ENABLE_ACTIONS=1
-
-src
-git update-index --skip-worktree pkg_files/github/db/schema.production.json.gz
-git update-index --skip-worktree pkg_files/github/seed.sql
