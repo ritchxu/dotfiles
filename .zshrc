@@ -41,10 +41,10 @@ zi wait silent for \
   OMZP::ssh-agent
 
 # Completions
-zi wait lucid light-mode for \
-  id-as"kubectl" has"kubectl" as"completion" \
-    atclone="kubectl completion zsh > _kubectl" \
-    atpull"%atclone" nocompile blockf z-shell/null
+# zi wait lucid light-mode for \
+#   id-as"kubectl" has"kubectl" as"completion" \
+#     atclone="kubectl completion zsh > _kubectl" \
+#     atpull"%atclone" nocompile blockf z-shell/null
 
 # Plugins
 zi wait lucid depth=1 light-mode for \
@@ -87,16 +87,25 @@ if [ -f ~/token.sh ]; then
   source ~/token.sh
 fi
 
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/go/bin
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$HOME/go/bin"
 
 export GOPROXY="https://nobody:$GITHUB_TOKEN@goproxy.githubapp.com/mod,https://proxy.golang.org/,direct"
 export GOPRIVATE=
 export GONOPROXY=
 export GONOSUMDB='github.com/github/*'
 
-export PATH=$HOME/.istioctl/bin:$PATH
+export PATH="$HOME/.istioctl/bin:$PATH"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$HOME/.bun/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/opt/mysql/bin:$PATH"
+export PATH="$PATH:$HOME/.dotnet/tools"
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
