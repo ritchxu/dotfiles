@@ -18,7 +18,9 @@ autoload -Uz _zi
 (( ${+_comps} )) && _comps[zi]=_zi
 
 # Homebrew
-if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
+if command -v brew >/dev/null 2>&1; then
+  eval "$(brew shellenv)"
+elif [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
@@ -83,29 +85,23 @@ alias t="transmission-cli -u 0 -w ~/downloads"
 alias gbc='git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed "s|^refs/remotes/origin/||") && git pull && git branch --format="%(refname:short)" | grep -v "^$(git branch --show-current)$" | xargs -r git branch -d'
 
 # Exports
-if [ -f ~/token.sh ]; then
-  source ~/token.sh
+if [ -f "$HOME/token.sh" ]; then
+  source "$HOME/token.sh"
 fi
 
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:/usr/local/go/bin"
-export PATH="$PATH:$HOME/go/bin"
+typeset -U path PATH
+
+export BUN_INSTALL="$HOME/.bun"
+export PNPM_HOME="$HOME/.local/share/pnpm"
+
+path+=("$HOME/.local/bin" "/usr/local/go/bin" "$HOME/go/bin")
+path=("$HOME/.istioctl/bin" "$BUN_INSTALL/bin" "/home/linuxbrew/.linuxbrew/opt/mysql/bin" "$PNPM_HOME" $path)
+path+=("$HOME/.dotnet/tools")
 
 export GOPROXY="https://nobody:$GITHUB_TOKEN@goproxy.githubapp.com/mod,https://proxy.golang.org/,direct"
 export GOPRIVATE=
 export GONOPROXY=
 export GONOSUMDB='github.com/github/*'
-
-export PATH="$HOME/.istioctl/bin:$PATH"
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$HOME/.bun/bin:$PATH"
-export PATH="/home/linuxbrew/.linuxbrew/opt/mysql/bin:$PATH"
-export PATH="$PATH:$HOME/.dotnet/tools"
-export PNPM_HOME="$HOME/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
