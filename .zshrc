@@ -97,6 +97,7 @@ export PNPM_HOME="$HOME/.local/share/pnpm"
 path+=("$HOME/.local/bin" "/usr/local/go/bin" "$HOME/go/bin")
 path=("$HOME/.istioctl/bin" "$BUN_INSTALL/bin" "/home/linuxbrew/.linuxbrew/opt/mysql/bin" "$PNPM_HOME" $path)
 path+=("$HOME/.dotnet/tools")
+path=("$HOME/.opencode/bin" $path)
 
 export GOPROXY="https://nobody:$GITHUB_TOKEN@goproxy.githubapp.com/mod,https://proxy.golang.org/,direct"
 export GOPRIVATE=
