@@ -1,7 +1,7 @@
-### GitHub dev server dotfiles
+### GitHub dotfiles
 
 ```shell
 cd ~
-git clone https://github.com/ryansimmen/dotfiles.git .dotfiles
+git clone https://github.com/ritchxu/dotfiles.git .dotfiles
 .dotfiles/install.sh
 ```
