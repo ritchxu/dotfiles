@@ -11,3 +11,5 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 cp .zshrc $HOME/.zshrc
 echo 'exec zsh' >> $HOME/.bashrc
+
+cp -R .copilot "$HOME/.copilot"
