@@ -1,6 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="agnoster"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-bat zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 # Hide hostname in agnoster prompt
 prompt_context() {
