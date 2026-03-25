@@ -5,5 +5,7 @@ set -euo pipefail
 git config --global push.default current
 
 # oh-my-zsh
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
-"$SCRIPT_DIR/install-ohmyzsh.sh"
+sudo apt-get update && sudo apt-get install -y zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+cp .zshrc $HOME/.zshrc
+chsh -s $(which zsh)
