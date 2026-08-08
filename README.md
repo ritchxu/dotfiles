@@ -16,11 +16,7 @@ live in this repository.
 Each gist should contain a `SKILL.md` file. Copilot loads that file from the
 skill directory; other files can support the skill but are not loaded directly.
 
-Setup (one time per machine or Codespaces configuration):
-
-1. Set each skill gist's description to `Copilot skill: <name>`.
-2. Create a fine-grained PAT scoped to **Gists: Read-only**.
-3. Add it as a Codespaces secret named `GIST_SKILLS_TOKEN` under **Settings >
-   Secrets and variables > Codespaces**.
-
-If the secret or the GitHub CLI is unavailable, `install.sh` skips the sync.
+Set each skill gist's description to `Copilot skill: <name>`. The environment
+running `install.sh` is expected to provide `GIST_SKILLS_TOKEN` with access to
+the gists. If the variable or the GitHub CLI is unavailable, the sync is
+skipped.
